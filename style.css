@@ -1,0 +1,119 @@
+.contact {
+    background-color: black;
+    color : white;
+    height: 30px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 8px;
+}
+.navbar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border : none;
+    margin-bottom: 0px;
+}
+/* navbar */
+.navbar-default {
+    background-color: #fec902;
+}
+/* Title */
+.navbar-default .navbar-brand {
+    font-family: 'Lobster';
+    color: black;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #9e1507;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #9e1507;
+    
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fec902;
+    background-color: black;
+    font-weight: bold;
+    
+}
+.form-control {
+    border-radius: 0px;
+    border : none;
+}
+.btnsearch {
+    border-radius: 0px;
+    background-color: black;
+    border : none;
+    color: #fec902;
+}
+.btnsearch:hover{
+    background-color:#9e1507 ;
+    color: white;
+}
+.navbar-default .navbar-toggle {
+    border : none ;
+    background-color: #605e5e;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #605e5e;;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+.itemhead {
+    background-color: black;
+    color:white;
+    font-weight: bold;
+}
+.image:hover {
+    -webkit-filter: brightness(0.3);
+    filter: brightness(0.3);
+}
+.newshead {
+    background-color: rgb(209, 207, 207);
+    color: black;
+    font-weight: bold;
+    text-align: justify;
+    padding: 10px;
+}
+.content{
+    background-color: rgb(209, 207, 207);
+    color: black;
+    text-align: justify;
+    padding: 0px 10px 10px 10px;
+}
+.footer{
+    background-color: #1d1d1d;
+    color: white;
+}
+.btnfoot {
+    border-radius: 0px;
+    background-color: #fec902;
+    border : none;
+    color: black;
+    font-weight: bold;
+}
+.item {
+    margin:5px 0px;
+}
+.pagination {
+    float: right;
+}
+.pagination > li > a {
+    color: black;
+    background-color: #fec902;
+}
+.pagination > .active > a {
+    color: #fec902;
+    background-color: black;
+}
