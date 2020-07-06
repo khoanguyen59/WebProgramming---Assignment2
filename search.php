@@ -93,7 +93,7 @@
 					<li><a href="price.php">Bảng giá</a></li>
 					<li><a href="contact.html">Liên hệ</a></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search" method="GET" action=search.php>
+				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>

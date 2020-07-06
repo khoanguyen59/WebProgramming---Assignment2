@@ -78,9 +78,9 @@
 					<li class="active"><a href="price.php">Bảng giá</a></li>
 					<li><a href="contact.html">Liên hệ</a></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search">
+				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Nhập từ khóa">
+						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
@@ -104,7 +104,7 @@
 			if (!$conn) {
 				die("Connection failed: " . mysqli_connect_error());
 			}
-			$showRecordPerPage = 5;
+			$showRecordPerPage = 2;
 			if(isset($_GET['page']) && !empty($_GET['page'])){
 				$currentPage = $_GET['page'];
 			}else{
