@@ -117,3 +117,8 @@
     color: #fec902;
     background-color: black;
 }
+.btn.btn-primary {
+    color: black;
+    background-color: #fec902;
+    border-color: #feed02;
+}
