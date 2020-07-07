@@ -23,7 +23,9 @@
 				</div>
 			</div>
 		</div>
-
+		<?php 
+			require "sesssion.php";
+		?>
 		<nav class="navbar navbar-default navbar-fixed-top ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -33,9 +35,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Admin Site</a>
+				<a class="navbar-brand" href="index.php">Home</a>
 			</div>
-
+			<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET">
+					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
+						<?php echo $type, ' ', $name ?>
+					</button>
+					<ul class="dropdown-menu">
+  						<li><a href="<?php echo $link1 ?>"><?php echo $function1 ?></a></li>
+    					<li><a href="<?php echo $link2 ?>"><?php echo $function2 ?></a></li>
+  					</ul>
+			</form>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">

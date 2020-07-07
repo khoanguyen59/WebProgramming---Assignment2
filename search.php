@@ -99,6 +99,11 @@
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
+				<form class="navbar-form navbar-right" style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
+					<button type="submit" class="btn btn-default btnsearch">				
+						Chào <?php echo $type, ':', $name ?>
+					</button>
+				</form>
 			</div><!-- /.navbar-collapse -->
 		</nav>
 	</div>

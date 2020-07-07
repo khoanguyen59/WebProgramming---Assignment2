@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
@@ -10,8 +10,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
+<?php 
+	require "sesssion.php";
+?>
 <body>
+
 	<div class="fluid-container" style="margin-top: 15px;">
 		<div class="fluid-container contact">
 			<div class="row row-no-gutters">
@@ -34,17 +37,17 @@
 		
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img style="width:100%" src="./pic/cover1.png" alt="">     
-                </div>
-            
-                <div class="item">
-                    <img style="width:100%" src="./pic/cover2.jpg" alt="">
-                </div>
-                
-                <div class="item">
-                    <img style="width:100%" src="./pic/cover3.png" alt="">      
-                </div>
+			  <div class="item active">
+				<img style="width:100%" src="./pic/cover1.png" alt="">     
+			  </div>
+		
+			  <div class="item">
+				<img style="width:100%" src="./pic/cover2.jpg" alt="">
+			  </div>
+			
+			  <div class="item">
+				<img style="width:100%" src="./pic/cover3.png" alt="">      
+			  </div>
 			</div>
 		
 			<!-- Left and right controls -->
@@ -57,7 +60,7 @@
 			  <span class="sr-only">Next</span>
 			</a>
 		</div>
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-fixed-top ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -72,111 +75,44 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Trang chủ</a></li>
-					<li><a href="overview.html">Giới thiệu</a></li>
-					<li class="active"><a href="service.html">Dịch vụ</a></li>
+					<li><a href="index.php">Trang chủ</a></li>
+					<li><a href="overview.php">Giới thiệu</a></li>
+					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li class="active"><a href="contact.html">Liên hệ</a></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search" action="search.php" method="GET">
+				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
+				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
+					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
+						<?php echo $type, ' ', $name ?>
+					</button>
+					<ul class="dropdown-menu">
+  						<li><a href="<?php echo $link1 ?>"><?php echo $function1 ?></a></li>
+    					<li><a href="<?php echo $link2 ?>"><?php echo $function2 ?></a></li>
+  					</ul>
+				</form>
 			</div><!-- /.navbar-collapse -->
 		</nav>
 	</div>
     <br>
-    
     <div class="container">
-		<div class="container">
-			<h3  style="padding-left: 10px; border-left: #fec902 7px solid;">BAN NHẠC</h3>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/acoustic.jpg" alt="">
-						<div class="itemhead">BAN NHẠC ACOUSTIC</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/elec.jpeg" alt="">
-						<div class="itemhead">BAN NHẠC ĐIỆN TỬ</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/rock.jpg" alt="">
-						<div class="itemhead">BAN NHẠC ROCK</div>
-					</div>
-				</div>
-			</div>
-			
-			
-		</div>
-		<div class="container">
-			<h3 style="padding-left: 10px; border-left: #fec902 7px solid;">ÂM THANH</h3>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/home.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÂM THANH TRONG NHÀ</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/hall.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÂM THANH HỘI TRƯỜNG</div> 
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/outdoor.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÂM THANH NGOÀI TRỜI</div>
-					</div>
-				</div> 
-			</div>
-		</div>
-		<div class="container">
-			<H3 style="padding-left: 10px; border-left: #fec902 7px solid;">ÁNH SÁNG</H3>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/lighthome.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÁNH SÁNG TRONG NHÀ</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/halllight.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÁNH SÁNG HỘI TRƯỜNG</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<div class="item text-center">
-					<div class="image">
-						<img style="width:100%;" src="./pic/lightoutdoor.jpg" alt="">
-						<div class="itemhead">HỆ THỐNG ÁNH SÁNG NGOÀI TRỜI</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    
+        <H3 style="padding-left: 10px; border-left: #fec902 7px solid;">MEDIA GROUP SOUND OF IT</H3>
+        <p><b>Địa chỉ</b> : Đại học Bách Khoa ĐHQG-TP. HCM</p>
+        <p><b>Điện thoại</b> : 0359681552</p>
+        <p><b>Hotline</b> : 0795960963</p>
+        <p><b>Email</b> : soitbackstage@gmail.com</p>
+        <p><b>Fanpage</b> : facebook.com/soitbackstage</p>
+        <br>
+        
+          
     </div>
-
     <br>
+    
 
 	<div class="fluid-container footer">
 		<div class="container">

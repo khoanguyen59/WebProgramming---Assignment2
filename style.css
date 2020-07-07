@@ -43,6 +43,7 @@
     color: #fec902;
     background-color: black;
     font-weight: bold;
+    border : solid 1px black;;
     
 }
 .form-control {

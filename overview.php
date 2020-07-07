@@ -10,7 +10,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
+<?php 
+	require "sesssion.php";
+?>
 <body>
 	<div class="fluid-container" style="margin-top: 15px;">
 		<div class="fluid-container contact">
@@ -72,17 +74,26 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="index.php">Trang chủ</a></li>
 					<li  class="active"><a href="overview.html">Giới thiệu</a></li>
-					<li><a href="service.html">Dịch vụ</a></li>
+					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search" method="GET" action=search.php>
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
+				</form>
+				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
+					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
+						<?php echo $type, ' ', $name ?>
+					</button>
+					<ul class="dropdown-menu">
+  						<li><a href="<?php echo $link1 ?>"><?php echo $function1 ?></a></li>
+    					<li><a href="<?php echo $link2 ?>"><?php echo $function2 ?></a></li>
+  					</ul>
 				</form>
 			</div><!-- /.navbar-collapse -->
 		</nav>

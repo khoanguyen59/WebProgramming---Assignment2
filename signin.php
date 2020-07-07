@@ -14,7 +14,7 @@
 	require "sesssion.php";
 ?>
 <body>
-	<div class="fluid-container" style="margin-top: 15px;">
+<div class="fluid-container" style="margin-top: 15px;">
 		<div class="fluid-container contact">
 			<div class="row row-no-gutters">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
@@ -36,17 +36,17 @@
 		
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-			    <div class="item active">
-                    <img style="width:100%" src="./pic/cover1.png" alt="">     
-                </div>
-            
-                <div class="item">
-                    <img style="width:100%" src="./pic/cover2.jpg" alt="">
-                </div>
-                
-                <div class="item">
-                    <img style="width:100%" src="./pic/cover3.png" alt="">      
-                </div>
+			  <div class="item active">
+				<img style="width:100%" src="./pic/cover1.png" alt="">     
+			  </div>
+		
+			  <div class="item">
+				<img style="width:100%" src="./pic/cover2.jpg" alt="">
+			  </div>
+			
+			  <div class="item">
+				<img style="width:100%" src="./pic/cover3.png" alt="">      
+			  </div>
 			</div>
 		
 			<!-- Left and right controls -->
@@ -59,7 +59,8 @@
 			  <span class="sr-only">Next</span>
 			</a>
 		</div>
-		<nav class="navbar navbar-default navbar-fixed-top ">
+
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -74,20 +75,20 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.php">Trang chủ</a></li>
-					<li><a href="overview.php">Giới thiệu</a></li>
-					<li><a href="service.php">Dịch vụ</a></li>
-					<li class="active"><a href="price.php">Bảng giá</a></li>
-					<li><a href="contact.php">Liên hệ</a></li>
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="overview.html">Giới thiệu</a></li>
+					<li><a href="service.html">Dịch vụ</a></li>
+					<li><a href="price.php">Bảng giá</a></li>
+					<li><a href="contact.html">Liên hệ</a></li>
 				</ul>
-				
 				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
-				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
+				
+				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET" >
 					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
 						<?php echo $type, ' ', $name ?>
 					</button>
@@ -101,88 +102,37 @@
 	</div>
     <br>
     <div class="container">
-        <H3 style="padding-left: 10px; border-left: #fec902 7px solid;">BẢNG GIÁ TỪNG HẠNG MỤC</H3>
-		<br>
-		<?php
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "examples";
-
-			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
-			
-			// Check connection
-			if (!$conn) {
-				die("Connection failed: " . mysqli_connect_error());
-			}
-			$showRecordPerPage = 5;
-			if(isset($_GET['page']) && !empty($_GET['page'])){
-				$currentPage = $_GET['page'];
-			}else{
-				$currentPage = 1;
-			}
-			$startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-			$totalEmpSQL = "SELECT * FROM services";
-			$allEmpResult = mysqli_query($conn, $totalEmpSQL);
-			$totalEmployee = mysqli_num_rows($allEmpResult);
-			$lastPage = ceil($totalEmployee/$showRecordPerPage);
-			$firstPage = 1;
-			$nextPage = $currentPage + 1;
-			$previousPage = $currentPage - 1;
-			$empSQL = "SELECT id, name, price, detail  FROM `services` LIMIT $startFrom, $showRecordPerPage";
-			$empResult = mysqli_query($conn, $empSQL);
-		?>
-        <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Tên hạng mục</th>
-                <th scope="col">Giá tham khảo</th>
-                <th scope="col">Nội dung cung cấp</th>
-              </tr>
-			</thead>
-			
-            <tbody>
-			<?php
-			while($emp = mysqli_fetch_assoc($empResult)){
-				?>
-				<tr>
-				<th scope="row"><?php echo $emp['id']; ?></th>
-				<td><?php echo $emp['name']; ?></td>
-				<td><?php echo $emp['price']; ?></td>
-				<td><?php echo $emp['detail']; ?></td>
-				</tr>
-			<?php } ?>
-            </tbody>
-          </table>
-          <nav aria-label="Page navigation">
-			<ul class="pagination justify-content-end">
-				<?php if($currentPage != $firstPage) { ?>
-				<li class="page-item">
-					<a class="page-link" href="?page=<?php echo $firstPage ?>" tabindex="-1" aria-label="Previous">
-						<span aria-hidden="true">First</span>
-					</a>
-				</li>
-				<?php } ?>
-				<?php if($currentPage >= 2) { ?>
-				<li class="page-item"><a class="page-link" href="?page=<?php echo $previousPage ?>"><?php echo $previousPage ?></a></li>
-				<?php } ?>
-				<li class="page-item active"><a class="page-link" href="?page=<?php echo $currentPage ?>"><?php echo $currentPage ?></a></li>
-				<?php if($currentPage != $lastPage) { ?>
-				<li class="page-item"><a class="page-link" href="?page=<?php echo $nextPage ?>"><?php echo $nextPage ?></a></li>
-				<li class="page-item">
-					<a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
-						<span aria-hidden="true">Last</span>
-					</a>
-				</li>
-				<?php } ?>
-			</ul>
-		</nav>
-    </div>
-    <br>
-    
-
+        <form class="form-horizontal" action='signin_action.php' method="POST">
+        <fieldset>
+        <div id="legend">
+            <legend class="">Sign In</legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">Username</label>
+            <div class="controls">
+            <input type="text" id="username" name="username" placeholder=""  class="input-xlarge">
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Password-->
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+            <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+            </div>
+        </div>
+        <br>
+       
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+            <button class="btn btn-success">Sign In</button>
+            </div>
+        </div>
+        </fieldset>
+        </form>
+	</div><br>
+	
 	<div class="fluid-container footer">
 		<div class="container">
 			<div class="row">
@@ -208,6 +158,5 @@
 			
 		</div>
 	</div>
-
 </body>
 </html>

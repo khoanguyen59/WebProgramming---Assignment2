@@ -10,9 +10,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
+<?php 
+	require "sesssion.php";
+?>
 <body>
-	<div class="fluid-container" style="margin-top: 15px;">
+<div class="fluid-container" style="margin-top: 15px;">
 		<div class="fluid-container contact">
 			<div class="row row-no-gutters">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
@@ -57,7 +59,8 @@
 			  <span class="sr-only">Next</span>
 			</a>
 		</div>
-		<nav class="navbar navbar-default navbar-fixed-top ">
+
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -72,11 +75,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Trang chủ</a></li>
-					<li><a href="overview.html">Giới thiệu</a></li>
-					<li><a href="service.html">Dịch vụ</a></li>
+					<li><a href="index.php">Trang chủ</a></li>
+					<li><a href="overview.php">Giới thiệu</a></li>
+					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li class="active"><a href="contact.html">Liên hệ</a></li>
+					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
@@ -84,24 +87,65 @@
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
+				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET">
+					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
+						<?php echo $type, ' ', $name ?>
+					</button>
+					<ul class="dropdown-menu">
+  						<li><a href="<?php echo $link1 ?>"><?php echo $function1 ?></a></li>
+    					<li><a href="<?php echo $link2 ?>"><?php echo $function2 ?></a></li>
+  					</ul>
+				</form>
 			</div><!-- /.navbar-collapse -->
 		</nav>
 	</div>
     <br>
     <div class="container">
-        <H3 style="padding-left: 10px; border-left: #fec902 7px solid;">MEDIA GROUP SOUND OF IT</H3>
-        <p><b>Địa chỉ</b> : Đại học Bách Khoa ĐHQG-TP. HCM</p>
-        <p><b>Điện thoại</b> : 0359681552</p>
-        <p><b>Hotline</b> : 0795960963</p>
-        <p><b>Email</b> : soitbackstage@gmail.com</p>
-        <p><b>Fanpage</b> : facebook.com/soitbackstage</p>
-        <br>
-        
-          
-    </div>
-    <br>
-    
+        <form class="form-horizontal" action='editprofile.php' method="POST">
+			<fieldset>
+			<div id="legend">
+				<legend class="">Tài khoản</legend>
+			</div>
+			<div class="control-group">
+				<!-- Username -->
+				<label class="control-label"  for="username">Username</label>
+				<div class="controls">
+				<input type="text" id="username" name="username" value="<?php echo $name ?>"  class="input-xlarge">
+				<p class="help-block">New username can contain any letters or numbers, without spaces</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<!-- E-mail -->
+				<label class="control-label" for="email">E-mail</label>
+				<div class="controls">
+				<input type="text" id="email" name="email" value="<?php echo $mail ?>" class="input-xlarge">
+				<p class="help-block">Please provide your new E-mail</p>
+				</div>
+			</div>
 
+			<div class="control-group">
+				<!-- Password-->
+				<label class="control-label" for="password">Password</label>
+				<div class="controls">
+				<input type="password" id="password" name="password" value="<?php echo $pass ?>" class="input-xlarge">
+				<p class="help-block">New password should be at least 4 characters</p>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<!-- Password -->
+				<label class="control-label"  for="phone_number">Phone Number</label>
+				<div class="controls">
+				<input  id="phone_number" name="phone_number" value= "<?php echo $phone ?>" class="input-xlarge">
+				<p class="help-block">Please provide your new phone number</p>
+				</div>
+			</div>
+
+			<input type="submit" name="update" value="Update">	
+			</fieldset>
+        </form>
+	</div><br>
+	
 	<div class="fluid-container footer">
 		<div class="container">
 			<div class="row">
@@ -127,6 +171,5 @@
 			
 		</div>
 	</div>
-
 </body>
 </html>

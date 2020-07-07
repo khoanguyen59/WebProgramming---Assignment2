@@ -1,8 +1,5 @@
 <?php
    session_start();
-   unset($_SESSION["username"]);
-   unset($_SESSION["password"]);
-   
-   echo 'You have cleaned session';
-   header('Refresh: 2; URL = index.html');
+   session_destroy();
+   header("Location: index.php");
 ?>
