@@ -1,33 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.1
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 08, 2020 lúc 08:49 AM
--- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.4.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Cơ sở dữ liệu: `examples`
---
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `cars`
---
-
 CREATE TABLE `cars` (
   `id` int(11) NOT NULL,
   `name` varchar(40) DEFAULT NULL,
@@ -73,18 +43,7 @@ INSERT INTO `comments` (`id`, `service`, `user`, `content`, `date`) VALUES
 (7, 'Ban nhạc Rock', 'Trump', 'Có giảm giá không ạ?', '04/04/2020'),
 (8, 'Hệ thống ánh sáng hội trường', 'Anonymous', 'Jonathan Galindo has followed you.', '08/07/2020'),
 (9, 'Hệ thống ánh sáng hội trường', 'Anonymous', 'Check under your bed. Surpriseee?', '08/07/2020'),
-(10, 'Ban nhạc Rock', 'Putin', 'OK Boomer', '07/07/2020'),
-(60, 'Ban nhạc điện tử', 'Putin', 'ủa', '08/07/2020'),
-(61, 'Ban nhạc điện tử', 'Putin', 'From', '08/07/2020'),
-(62, 'Hệ thống âm thanh hội trường', 'Putin', 'Lul', '08/07/2020'),
-(63, 'Hệ thống âm thanh hội trường', 'Putin', 'Lul', '08/07/2020'),
-(64, 'Ban nhạc Acoustic', 'Putin', 'lul', '08/07/2020'),
-(65, 'Ban nhạc Acoustic', 'Putin', 'lul', '08/07/2020'),
-(66, 'Ban nhạc Acoustic', 'Putin', 'lul', '08/07/2020'),
-(67, 'Ban nhạc Acoustic', 'Putin', 'Lalilaa', '08/07/2020'),
-(68, 'Ban nhạc điện tử', 'Putin', 'Metacusta', '08/07/2020'),
-(69, 'Ban nhạc Rock', 'Putin', 'ĐUợc đấy', '08/07/2020'),
-(70, 'Ban nhạc Acoustic', 'DKhoa', 'Cmt này chỉ cho đủ số', '08/07/2020');
+(10, 'Ban nhạc Rock', 'Putin', 'OK Boomer', '07/07/2020');
 
 -- --------------------------------------------------------
 
@@ -96,23 +55,24 @@ CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `price` varchar(10) DEFAULT NULL,
-  `detail` varchar(200) DEFAULT NULL
+  `detail` varchar(200) DEFAULT NULL,
+  `imgsrc` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `services`
 --
 
-INSERT INTO `services` (`id`, `name`, `price`, `detail`) VALUES
-(1, 'Ban nhạc Acoustic', '2.000.000', 'Ban nhạc gồm 4 thành viên (Guitar - Cajon - 2 Vocal)'),
-(2, 'Ban nhạc điện tử', '5.000.000', 'Ban nhạc gồm 6 thành viên (E.Guitar - Bass - E.Drum - Keyboard - 2 Vocal)'),
-(3, 'Ban nhạc Rock', '4.000.000', 'Ban nhạc gồm 5 thành viên (E.Guitar - Bass - E.Drum - Keyboard - Vocal)'),
-(4, 'Hệ thống âm thanh trong nhà', '4.000.000', ''),
-(5, 'Hệ thống âm thanh hội trường', '8.000.000', ''),
-(6, 'Hệ thống âm thanh nogài trời', '12.000.000', ''),
-(7, 'Hệ thống ánh sáng trong nhà', '2.000.000', '8 Parled 54 - 2 Beam 230'),
-(8, 'Hệ thống ánh sáng hội trường', '6.000.000', '24 Parled 54 - 8 Beam 230'),
-(9, 'Hệ thống ánh sáng ngoài trời', '14.000.000', '48 Parled 54 - 24 Beam 230');
+INSERT INTO `services` (`id`, `name`, `price`, `detail`, `imgsrc`) VALUES
+(1, 'Ban nhạc Acoustic', '2.000.000', 'Ban nhạc gồm 4 thành viên (Guitar - Cajon - 2 Vocal)', '//i.ibb.co/CJHwgN1/acoustic.jpg'),
+(2, 'Ban nhạc điện tử', '5.000.000', 'Ban nhạc gồm 6 thành viên (E.Guitar - Bass - E.Drum - Keyboard - 2 Vocal)', 'https://i.ibb.co/j42rxcr/elec.jpg'),
+(3, 'Ban nhạc Rock', '4.000.000', 'Ban nhạc gồm 5 thành viên (E.Guitar - Bass - E.Drum - Keyboard - Vocal)', 'https://i.ibb.co/SBLnpKZ/rock.jpg'),
+(4, 'Hệ thống âm thanh trong nhà', '4.000.000', '', 'https://i.ibb.co/3f3cJgT/home.jpg'),
+(5, 'Hệ thống âm thanh hội trường', '8.000.000', '', 'https://i.ibb.co/Pcspntx/hall.jpg'),
+(6, 'Hệ thống âm thanh nogài trời', '12.000.000', '', 'https://i.ibb.co/BwtJJRw/outdoor.jpg'),
+(7, 'Hệ thống ánh sáng trong nhà', '2.000.000', '8 Parled 54 - 2 Beam 230', 'https://i.ibb.co/mqCZQJb/lighthome.jpg'),
+(8, 'Hệ thống ánh sáng hội trường', '6.000.000', '24 Parled 54 - 8 Beam 230', 'https://i.ibb.co/0DDd1Hw/halllight.jpg'),
+(9, 'Hệ thống ánh sáng ngoài trời', '14.000.000', '48 Parled 54 - 24 Beam 230', 'https://ibb.co/WD7Nf1P');
 
 -- --------------------------------------------------------
 
@@ -181,7 +141,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `services`
@@ -194,8 +154,3 @@ ALTER TABLE `services`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

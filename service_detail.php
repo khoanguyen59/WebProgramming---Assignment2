@@ -1,6 +1,19 @@
+<?php
+$conn = mysqli_connect("localhost","root","","examples");
+
+if(!$conn)
+{
+	die("Connection failed: " . mysqli_connect_error());
+}
+
+$idg = $_GET['id']; 
+$qry = mysqli_query($conn,"select * from services where id='$idg'");
+
+$data = mysqli_fetch_array($qry); // fetch data
+$query = mysqli_query($conn, "SELECT * from `comments` WHERE service = '$data[name]'");
+?>                
 <!DOCTYPE html>
 <html lang="en">
-	
 <head>
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
@@ -110,26 +123,13 @@
 	
 	<div class="container">
         <div class="col-md-6 col-xs-6 text-right">
-            <img src="./pic/acoustic.jpg" style="width:100%;;"/>
+            <img src="<?php echo $data['imgsrc'];?>" style="width:100%;"/>
         </div>
         <div class="col-md-6 col-xs-6">
-            <?php
-                $conn = mysqli_connect("localhost","root","","examples");
-
-                if(!$conn)
-                {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-                $idg = $_GET['id']; 
-                $qry = mysqli_query($conn,"select * from services where id='$idg'");
-
-                $data = mysqli_fetch_array($qry); // fetch data
-                $query = mysqli_query($conn, "SELECT * from `comments` WHERE service = '$data[name]'");
-            ?>
           <h1><?php echo $data['name'];?></h1>      
           <h4><?php echo $data['price'];?></h4>
           <h4><?php echo $data['detail'];?></h4>
+		  <h4><?php echo $data['imgsrc'];?></h4>
         </div>
 	</div>
     <br>
