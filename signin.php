@@ -75,11 +75,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Trang chủ</a></li>
-					<li><a href="overview.html">Giới thiệu</a></li>
-					<li><a href="service.html">Dịch vụ</a></li>
+					<li><a href="index.php">Trang chủ</a></li>
+					<li><a href="overview.php">Giới thiệu</a></li>
+					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">

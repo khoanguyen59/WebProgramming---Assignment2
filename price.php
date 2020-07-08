@@ -152,6 +152,7 @@
 				<td><?php echo $emp['name']; ?></td>
 				<td><?php echo $emp['price']; ?></td>
 				<td><?php echo $emp['detail']; ?></td>
+				<td><th><a href="<?php echo "service_detail.php?id=".$emp['id'];?>"><button>Xem chi tiết...</button></a></th></td>
 				</tr>
 			<?php } ?>
             </tbody>

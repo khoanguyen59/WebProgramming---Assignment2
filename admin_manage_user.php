@@ -1,3 +1,9 @@
+<?php
+	require "sesssion.php";
+	if ($_SESSION['type'] != 'admin'){ 
+		header('location: index.php'); 
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +29,6 @@
 				</div>
 			</div>
 		</div>
-		<?php 
-			require "sesssion.php";
-		?>
 		<nav class="navbar navbar-default navbar-fixed-top ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">

@@ -76,7 +76,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="index.php">Trang chủ</a></li>
 					<li><a href="overview.php">Giới thiệu</a></li>
-					<li class="active"><a href="service.html">Dịch vụ</a></li>
+					<li class="active"><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
 					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>

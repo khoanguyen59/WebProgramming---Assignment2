@@ -75,7 +75,7 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="index.php">Trang chủ</a></li>
-					<li  class="active"><a href="overview.html">Giới thiệu</a></li>
+					<li  class="active"><a href="overview.php">Giới thiệu</a></li>
 					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
 					<li><a href="contact.php">Liên hệ</a></li>

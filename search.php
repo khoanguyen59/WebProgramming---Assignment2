@@ -87,22 +87,17 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Trang chủ</a></li>
-					<li><a href="overview.html">Giới thiệu</a></li>
-					<li><a href="service.html">Dịch vụ</a></li>
+					<li class="active"><a href="index.php">Trang chủ</a></li>
+					<li><a href="overview.php">Giới thiệu</a></li>
+					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
-				</form>
-				<form class="navbar-form navbar-right" style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
-					<button type="submit" class="btn btn-default btnsearch">				
-						Chào <?php echo $type, ':', $name ?>
-					</button>
 				</form>
 			</div><!-- /.navbar-collapse -->
 		</nav>
@@ -124,8 +119,8 @@
                 $query = mysqli_real_escape_string($conn, $query);
                 // makes sure nobody uses SQL injection
                 
-                $raw_results = mysqli_query($conn, "SELECT * FROM cars
-                    WHERE (`name` LIKE '%".$query."%') OR (`year` LIKE '%".$query."%')") or die(mysqli_error($conn));
+                $raw_results = mysqli_query($conn, "SELECT * FROM services
+                    WHERE (`name` LIKE '%".$query."%') OR (`detail` LIKE '%".$query."%')") or die(mysqli_error($conn));
                     
                 // * means that it selects all fields, you can also write: `id`, `title`, `text`
                 // articles is the name of our table
@@ -151,7 +146,8 @@
                         echo "<tr>
                         <th scope=row>".$results['id']."</th>
                         <td>".$results['name']."</td>
-                        <td>".$results['year']."</td>
+						<td>".$results['price']."</td>
+						<td>".$results['detail']."</td>
                         </tr>";
                         // posts results gotten from database(title and text) you can also show id ($results['id'])
                     }

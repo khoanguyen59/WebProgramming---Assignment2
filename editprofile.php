@@ -30,7 +30,7 @@
                 {
 
                     mysqli_close($conn); // Close connection
-                    header("location:INDEX.php"); // redirects to all records pyear
+                    header("location:index.php"); // redirects to all records pyear
                     exit;
                 }
                 else

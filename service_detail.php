@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	
 <head>
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
@@ -12,9 +13,11 @@
 </head>
 <?php 
 	require "sesssion.php";
+	if ($_SESSION['type'] != 'admin' && $_SESSION['type'] != 'member'){ 
+		header('location: price.php'); 
+	}
 ?>
 <body>
-
 	<div class="fluid-container" style="margin-top: 15px;">
 		<div class="fluid-container contact">
 			<div class="row row-no-gutters">
@@ -60,7 +63,8 @@
 			  <span class="sr-only">Next</span>
 			</a>
 		</div>
-		<nav class="navbar navbar-default navbar-fixed-top ">
+		
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -79,15 +83,17 @@
 					<li><a href="overview.php">Giới thiệu</a></li>
 					<li><a href="service.php">Dịch vụ</a></li>
 					<li><a href="price.php">Bảng giá</a></li>
-					<li class="active"><a href="contact.php">Liên hệ</a></li>
+					<li><a href="contact.php">Liên hệ</a></li>
 				</ul>
+				
 				<form class="navbar-form navbar-right" role="search" method="GET" action="search.php">
 					<div class="form-group">
 						<input type="text" name="query" class="form-control" placeholder="Nhập từ khóa">
 					</div>
 					<button type="submit" class="btn btn-default btnsearch">Tìm kiếm</button>
 				</form>
-				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET" action="<?php echo $link; ?>">
+
+				<form class="navbar-form navbar-right dropdown"style="margin-right : -15px;" role="search" method="GET">
 					<button type="submit"  data-toggle="dropdown"  class="dropdown-toggle btn btn-default btnsearch">				
 						<?php echo $type, ' ', $name ?>
 					</button>
@@ -96,23 +102,88 @@
     					<li><a href="<?php echo $link2 ?>"><?php echo $function2 ?></a></li>
   					</ul>
 				</form>
+				
 			</div><!-- /.navbar-collapse -->
 		</nav>
 	</div>
+	<br>
+	
+	<div class="container">
+        <div class="col-md-6 col-xs-6 text-right">
+            <img src="./pic/acoustic.jpg" style="width:100%;;"/>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <?php
+                $conn = mysqli_connect("localhost","root","","examples");
+
+                if(!$conn)
+                {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+                $idg = $_GET['id']; 
+                $qry = mysqli_query($conn,"select * from services where id='$idg'");
+
+                $data = mysqli_fetch_array($qry); // fetch data
+                $query = mysqli_query($conn, "SELECT * from `comments` WHERE service = '$data[name]'");
+            ?>
+          <h1><?php echo $data['name'];?></h1>      
+          <h4><?php echo $data['price'];?></h4>
+          <h4><?php echo $data['detail'];?></h4>
+        </div>
+	</div>
     <br>
+
     <div class="container">
-        <H3 style="padding-left: 10px; border-left: #fec902 7px solid;">MEDIA GROUP SOUND OF IT</H3>
-        <p><b>Địa chỉ</b> : Đại học Bách Khoa ĐHQG-TP. HCM</p>
-        <p><b>Điện thoại</b> : 0359681552</p>
-        <p><b>Hotline</b> : 0795960963</p>
-        <p><b>Email</b> : soitbackstage@gmail.com</p>
-        <p><b>Fanpage</b> : facebook.com/soitbackstage</p>
-        <br>
-        
-          
-    </div>
-    <br>
-    
+                <div class="col-md-8">
+                    <div class="page-header">
+                        <h3><small class="pull-right"><?php echo mysqli_num_rows($query); ?> bình luận</small> Bình luận </h3>
+                    </div> 
+                    <form method="POST">
+                    <div class="form-group" id="cmtlist">
+                        <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="Thêm bình luận"></textarea>
+                        <button type="submit" class="btn btn-primary" name="postcmt" style="float:right;">Đăng</button>
+                        <?php
+                            if(isset($_POST['postcmt'])){	
+                                $service = $data['name'];
+                                $user = $_SESSION['username'];
+                                $content = $_POST['comment'];
+                                $date = date("d/m/Y");
+                            if (strlen($content) < 1 || strlen($content) > 300){
+                                $message = "Độ dài bình luận từ 1-300 ký tự";
+                                echo "<script type='text/javascript'>alert('$message');</script>";
+                            }
+                            else{
+                                $insert = mysqli_query($conn,"INSERT INTO `comments`(`service`, `user`, `content`, `date`) VALUES ('$service','$user','$content','$date')");
+                                if(!$insert)
+                                {
+                                    echo mysqli_error($conn);
+								}
+								echo "<meta http-equiv='refresh' content='0'>";
+                            }
+                        }
+						mysqli_close($conn); // Close connection
+                    	?>
+                    </div>
+                    </form>
+                    <br><br>
+                    <div class="comments-list">
+						<?php 
+                            while($cmt = mysqli_fetch_assoc($query)){ ?>
+                                <div class="media">
+                                    <p class="pull-right"><small><?php echo $cmt['date']; ?></small></p>
+                                    <a class="media-left" href="#"></a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading user_name"><?php echo $cmt['user']; ?></h4>
+                                            <?php echo $cmt['content']; ?>
+                                        <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                                    </div>
+                                </div>
+                            <?php }
+                        ?>
+                    </div>
+                </div>
+	</div><br>
 
 	<div class="fluid-container footer">
 		<div class="container">
@@ -139,6 +210,6 @@
 			
 		</div>
 	</div>
-
+	<script>
 </body>
 </html>
